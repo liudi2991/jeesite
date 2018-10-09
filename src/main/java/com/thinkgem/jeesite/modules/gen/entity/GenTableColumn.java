@@ -246,6 +246,7 @@ public class GenTableColumn extends DataEntity<GenTableColumn> {
 			for (int i=0; i<ss.length; i++){
 				sss[i][0] = ss[i];
 				sss[i][1] = StringUtils.toUnderScoreCase(ss[i]);
+				//我在注释
 			}
 		}
 		return sss;

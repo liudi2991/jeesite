@@ -45,6 +45,8 @@
 			<allowedExtensions>swf,flv</allowedExtensions>
 			<deniedExtensions></deniedExtensions>
 		</type>
+		
+		
 	</types>
 	<accessControls>
 		<accessControl>

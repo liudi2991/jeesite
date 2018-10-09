@@ -246,6 +246,10 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
 	 * 转换为Float类型
 	 */
 	public static Float toFloat(Object val){
+		
+		System.out.println("232");
+		
+		
 		return toDouble(val).floatValue();
 	}
 

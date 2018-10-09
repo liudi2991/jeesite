@@ -6,12 +6,13 @@ public class PropertiesUtil {
 
 	private static String filename = "/mybatis-refresh.properties";
 	private static Properties pro = new Properties();
+
 	static {
 		try {
 			pro.load(PropertiesUtil.class.getResourceAsStream(filename));
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("Load mybatis-refresh “"+filename+"” file error.");
+			System.out.println("Load mybatis-refresh “" + filename + "” file error.");
 		}
 	}
 
