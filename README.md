@@ -2,6 +2,10 @@
 
 # JeeSite 企业信息化快速开发平台
 
+## 配套视频教程
+
+
+https://edu.csdn.net/course/detail/9430?pre_view=1
 
 ## 升级计划
 
