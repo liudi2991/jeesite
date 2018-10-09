@@ -22,13 +22,14 @@ https://edu.csdn.net/course/detail/9430?pre_view=1
 
 招募志愿者5名共同升级
 -----------------------------------------------------------------------------
-JeeSite 1.2.7 升級日志
+## JeeSite 1.2.7 升級日志
 2018年10-09~2018年10月09日
-1.	新增：汉字转拼音ChineseHelper、PinyinHelper类
-2.	修复db-test-jeesite.erm 不可用bug
-3.	核心框架：Spring Framework 4.1.9-->4.3.6
-4.	视图框架：Spring MVC       4.1.9-->4.3.6
-5.	持久层框架：MyBatis        3.4.1-->3.4.2
+1.	新增：汉字转拼音ChineseHelper、PinyinHelper类。
+2.	修复db-test-jeesite.erm 不可用bug。
+3.	核心框架：Spring Framework 4.1.9-->4.3.6。
+4.	视图框架：Spring MVC       4.1.9-->4.3.6。
+5.	持久层框架：MyBatis        3.4.1-->3.4.2。
+
 2018年10-09~2018年10月30日
 1.	新增：swagger 2.9.2集成
 
