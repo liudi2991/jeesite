@@ -55,19 +55,18 @@ JeeSite 提供了常用工具进行封装，包括日志工具、缓存工具、
 
 1、后端
 
-* 核心框架：Spring Framework 4.1
-* 安全框架：Apache Shiro 1.2
-* 视图框架：Spring MVC 4.1
+* 核心框架：Spring Framework 4.3.6
+* 安全框架：Apache Shiro 1.2.3
+* 视图框架：Spring MVC 4.3.6
 * 服务端验证：Hibernate Validator 5.2
 * 布局框架：SiteMesh 2.4
 * 工作流引擎：Activiti 5.21
 * 任务调度：Spring Task 4.1
-* 持久层框架：MyBatis 3.2
+* 持久层框架：MyBatis 3.4.2
 * 数据库连接池：Alibaba Druid 1.0
 * 缓存框架：Ehcache 2.6、Redis
 * 日志管理：SLF4J 1.7、Log4j
 * 工具类：Apache Commons、Jackson 2.2、Xstream 1.4、Dozer 5.3、POI 3.9
-* 短信网关：<http://www.lehuo520.cn> **乐云短信** SmsLeyunUtils.java
 
 2、前端
 
@@ -100,6 +99,8 @@ JeeSite 提供了常用工具进行封装，包括日志工具、缓存工具、
 4. 安全编码：用户表单提交所有数据，在服务器端都进行安全编码，防止用户提交非法脚本及SQL注入获取敏感数据等，确保数据安全。
 5. 密码加密：登录用户密码进行SHA1散列加密，此加密方法是不可逆的。保证密文泄露后的安全问题。
 6. 强制访问：系统对所有管理端链接都进行用户身份权限验证，防止用户直接填写url进行访问。
+
+
 
 ## 快速体验
 
