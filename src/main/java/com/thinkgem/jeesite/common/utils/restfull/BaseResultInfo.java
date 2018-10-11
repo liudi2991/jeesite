@@ -43,9 +43,21 @@ public class BaseResultInfo<T> implements Serializable {
 	 * @return
 	 * @author yaohailu
 	 */
-	public static BaseResultInfo<Map<String, Object>> getDefaultResultInfo(String code, String msg,
+	public static BaseResultInfo<Map<String, Object>> getDefaultMapResultInfoInstance(String code, String msg,
 			Map<String, Object> data) {
-		return new BaseResultInfo<Map<String, Object>>(ResultType.SUCCESS, "获取成功", data);
+		return new BaseResultInfo<Map<String, Object>>(code, msg, data);
+	}
+
+	/**
+	 * 创建一个新的BaseResultInfo 实例对象
+	 * @param code
+	 * @param msg
+	 * @param data
+	 * @return
+	 * @author yaohailu
+	 */
+	public BaseResultInfo<T> getDefaultResultInfoIn(String code, String msg, T data) {
+		return new BaseResultInfo<T>(code, msg, data);
 	}
 
 	public BaseResultInfo() {
