@@ -23,5 +23,7 @@ public class ResultType implements Serializable {
 	 * 操作成功 1
 	 */
 	public final static String SUCCESS = "1";
+	
+	
 
 }
