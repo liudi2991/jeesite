@@ -11,8 +11,8 @@
 	<!-- 加载配置属性文件 -->
 	<context:property-placeholder
 		ignore-unresolvable="true" location="classpath:jeesite.properties" />
-		
-		
+
+
 
 	<!-- 使用Annotation自动注册Bean,只扫描@Controller -->
 	<context:component-scan base-package="com.thinkgem.jeesite"
@@ -129,6 +129,11 @@
 			<bean
 				class="com.thinkgem.jeesite.modules.sys.interceptor.MobileInterceptor" />
 		</mvc:interceptor>
+		<!--国际化拦截器，配置此拦截器后支持url带参数lang来更改语言，如lang=zh_cn或lang=en_cs-->
+		<mvc:interceptor>
+			<mvc:mapping path="/${adminPath}/**"/>
+			<ref bean="localeChangeInterceptor" />
+		</mvc:interceptor>
 	</mvc:interceptors>
 
 	<!-- 支持Shiro对Controller的方法级AOP安全控制 begin -->
@@ -155,6 +160,23 @@
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="maxUploadSize" value="${web.maxUploadSize}" />
+	</bean>
+
+
+	<!-- 配置国际化资源文件路径 -->
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename" value="i18n/message"/>
+		<property name="cacheSeconds" value="5" />
+	</bean>
+	<!-- 基于Cookie的本地化解析器 -->
+	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
+		<property name="cookieMaxAge" value="604800"/>
+		<property name="defaultLocale" value="zh_CN"/>
+		<property name="cookieName" value="Language"/>
+	</bean>
+	<!--国际化拦截器，可以基于url参数修改语言-->
+	<bean id="localeChangeInterceptor" class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+		<property name="paramName" value="lang"/>
 	</bean>
 
 </beans>

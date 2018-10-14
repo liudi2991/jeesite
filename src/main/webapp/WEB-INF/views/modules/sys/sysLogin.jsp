@@ -12,6 +12,7 @@
       .form-signin .checkbox{margin-bottom:10px;color:#0663a2;} .form-signin .input-label{font-size:16px;line-height:23px;color:#999;}
       .form-signin .input-block-level{font-size:16px;height:auto;margin-bottom:15px;padding:7px;*width:283px;*padding-bottom:0;_padding:7px 7px 9px 7px;}
       .form-signin .btn.btn-large{font-size:16px;} .form-signin #themeSwitch{position:absolute;right:15px;bottom:10px;}
+	  .form-signin #langSwitch{position:absolute;right:95px;bottom:10px;}
       .form-signin div.validateCode {padding-bottom:15px;} .mid{vertical-align:middle;}
       .header{height:80px;padding-top:20px;} .alert{position:relative;width:300px;margin:0 auto;*padding-bottom:0px;}
       label.error{background:none;width:270px;font-weight:normal;color:inherit;margin:0;}
@@ -48,17 +49,25 @@
 	</div>
 	<h1 class="form-signin-heading">${fns:getConfig('productName')}</h1>
 	<form id="loginForm" class="form-signin" action="${ctx}/login" method="post">
-		<label class="input-label" for="username">登录名</label>
+		<label class="input-label" for="username"><spring:message code="sys.login.username"/> </label>
 		<input type="text" id="username" name="username" class="input-block-level required" value="${username}">
-		<label class="input-label" for="password">密码</label>
+		<label class="input-label" for="password"><spring:message code="sys.login.password"/></label>
 		<input type="password" id="password" name="password" class="input-block-level required">
 		<c:if test="${isValidateCodeLogin}"><div class="validateCode">
-			<label class="input-label mid" for="validateCode">验证码</label>
+			<label class="input-label mid" for="validateCode"><spring:message code="sys.login.validateCode"/> </label>
 			<sys:validateCode name="validateCode" inputCssStyle="margin-bottom:0;"/>
 		</div></c:if><%--
 		<label for="mobile" title="手机登录"><input type="checkbox" id="mobileLogin" name="mobileLogin" ${mobileLogin ? 'checked' : ''}/></label> --%>
-		<input class="btn btn-large btn-primary" type="submit" value="登 录"/>&nbsp;&nbsp;
-		<label for="rememberMe" title="下次不需要再登录"><input type="checkbox" id="rememberMe" name="rememberMe" ${rememberMe ? 'checked' : ''}/> 记住我（公共场所慎用）</label>
+        <spring:message code="sys.login.submit" var="submit"/>
+		<input class="btn btn-large btn-primary" type="submit" value="${submit}"/>&nbsp;&nbsp;
+		<label for="rememberMe" title="下次不需要再登录"><input type="checkbox" id="rememberMe" name="rememberMe" ${rememberMe ? 'checked' : ''}/> <spring:message code="sys.login.rememberMe"/> </label>
+		<div id="langSwitch" class="dropdown">
+			<a class="dropdown-toggle" data-toggle="dropdown" href="#"><spring:message code="sys.lang"/> <b class="caret"></b></a>
+			<ul class="dropdown-menu">
+				<li><a href="${ctx}/sys/i18n/language?language=zh_CN"><i class="icon-user"></i>&nbsp; 中文 </a></li>
+				<li><a href="${ctx}/sys/i18n/language?language=en"><i class="icon-lock"></i>&nbsp; English</a></li>
+			</ul>
+		</div>
 		<div id="themeSwitch" class="dropdown">
 			<a class="dropdown-toggle" data-toggle="dropdown" href="#">${fns:getDictLabel(cookie.theme.value,'theme','默认主题')}<b class="caret"></b></a>
 			<ul class="dropdown-menu">
