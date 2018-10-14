@@ -947,6 +947,15 @@
 			</roles>
 			<timezone>+8</timezone>
 		</developer>
+		<developer>
+			<id>LinZhaoguan</id>
+			<name>LinZhaoguan</name>
+			<email>linzhaoguan@126.com</email>
+			<roles>
+				<role>Project Developer</role>
+			</roles>
+			<timezone>+8</timezone>
+		</developer>
 	</developers>
 
 </project>
