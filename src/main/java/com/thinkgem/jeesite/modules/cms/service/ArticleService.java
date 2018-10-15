@@ -6,7 +6,9 @@ package com.thinkgem.jeesite.modules.cms.service;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
+import com.thinkgem.jeesite.modules.cms.entity.ArticleEs;
 import org.apache.commons.lang3.StringEscapeUtils;
 import org.apache.commons.lang3.time.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +42,8 @@ public class ArticleService extends CrudService<ArticleDao, Article> {
 	private ArticleDataDao articleDataDao;
 	@Autowired
 	private CategoryDao categoryDao;
+	@Autowired
+	private ElasticService elasticService;
 	
 	@Transactional(readOnly = false)
 	public Page<Article> findPage(Page<Article> page, Article article, boolean isDataScopeFilter) {
@@ -104,23 +108,31 @@ public class ArticleService extends CrudService<ArticleDao, Article> {
 			articleData.setId(article.getId());
 			dao.insert(article);
 			articleDataDao.insert(articleData);
+			//保存article到es
+			elasticService.addArticle(new ArticleEs(article.getId(), article.getTitle(), article.getKeywords(), articleData.getContent(), article.getWeight())) ;
+
 		}else{
 			article.preUpdate();
 			articleData = article.getArticleData();
 			articleData.setId(article.getId());
 			dao.update(article);
 			articleDataDao.update(article.getArticleData());
+			//更新article到es
+			elasticService.updateArticle(new ArticleEs(article.getId(), article.getTitle(), article.getKeywords(), articleData.getContent(), article.getWeight())) ;
+
 		}
 	}
 	
 	@Transactional(readOnly = false)
-	public void delete(Article article, Boolean isRe) {
+	public void delete(Article article, Boolean isRe){
 //		dao.updateDelFlag(id, isRe!=null&&isRe?Article.DEL_FLAG_NORMAL:Article.DEL_FLAG_DELETE);
 		// 使用下面方法，以便更新索引。
 		//Article article = dao.get(id);
 		//article.setDelFlag(isRe!=null&&isRe?Article.DEL_FLAG_NORMAL:Article.DEL_FLAG_DELETE);
 		//dao.insert(article);
 		super.delete(article);
+		//从es中删除
+		elasticService.delArticle(article.getId());
 	}
 	
 	/**
@@ -193,5 +205,22 @@ public class ArticleService extends CrudService<ArticleDao, Article> {
 		
 		return page;
 	}
-	
+
+
+	/**
+	 * 10.14 es全文检索功能
+	 */
+	public Page<Article> fullTextSearch(Page<Article> page, Article article){
+		//获取一页条数
+		int size = page.getPageSize();
+		//获取第几条开始
+		int start = (page.getPageNo() - 1) * size;
+
+		Map map = elasticService.searchArticle(article.getKeywords(),start , size,  "weight", "keyword", "title", "content");
+		page.setList((List)map.get("list"));
+		page.setCount((Long)map.get("total"));
+		return page;
+	}
+
+
 }

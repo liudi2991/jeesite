@@ -58,6 +58,9 @@
 
 		<springfox.version>2.9.2</springfox.version>
 
+        <!-- elasticsearch version setting -->
+		<elasticsearch.version>6.4.2</elasticsearch.version>
+
 
 	</properties>
 
@@ -633,6 +636,12 @@
 		<!-- swagger2 end -->
 
 
+        <!-- 引入Elasticsearch相关jar包-->
+        <dependency>
+            <groupId>org.elasticsearch.client</groupId>
+            <artifactId>elasticsearch-rest-high-level-client</artifactId>
+            <version>${elasticsearch.version}</version>
+        </dependency>
 
 	</dependencies>
 
@@ -951,6 +960,15 @@
 			<id>LinZhaoguan</id>
 			<name>LinZhaoguan</name>
 			<email>linzhaoguan@126.com</email>
+			<roles>
+				<role>Project Developer</role>
+			</roles>
+			<timezone>+8</timezone>
+		</developer>
+		<developer>
+			<id>wenbin</id>
+			<name>wenbin</name>
+			<email>lwb_1128@163.com</email>
 			<roles>
 				<role>Project Developer</role>
 			</roles>

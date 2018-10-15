@@ -79,6 +79,19 @@ public class ArticleController extends BaseController {
 		return "modules/cms/articleList";
 	}
 
+
+	@RequiresPermissions("cms:article:view")
+	@RequestMapping(value = {"search", ""})
+	public String fullTextSearch(Article article, HttpServletRequest request, HttpServletResponse response, Model model) {
+		Page<Article> page = articleService.fullTextSearch(new Page<Article>(request, response), article);
+		model.addAttribute("page", page);
+		return "modules/cms/articleList";
+	}
+
+
+
+
+
 	@RequiresPermissions("cms:article:view")
 	@RequestMapping(value = "form")
 	public String form(Article article, Model model) {
