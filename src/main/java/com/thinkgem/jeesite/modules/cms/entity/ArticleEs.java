@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * 文章搜索es
  *
- * @author ThinkGem
+ * @author wenbin
  * @version 2018-10-12
  */
 public class ArticleEs implements Serializable {

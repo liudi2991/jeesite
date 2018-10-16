@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 /**
  * es所有文章测试Controller
  *
- * @author ThinkGem
+ * @author wenbin
  * @version 2018-10-12
  */
 @Controller

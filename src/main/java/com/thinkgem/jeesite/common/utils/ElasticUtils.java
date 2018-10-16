@@ -34,7 +34,7 @@ import java.util.Map;
 /**
  * es搜索文章
  *
- * @author ThinkGem
+ * @author wenbin
  * @version 2018-10-12
  */
 public class ElasticUtils {
