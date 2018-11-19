@@ -39,6 +39,8 @@ public class FileTpl {
     public void setRoot(String root) {
         this.root = root;
     }
+    
+    
 
     public String getName() {
    		String ap = file.getAbsolutePath().substring(root.length());

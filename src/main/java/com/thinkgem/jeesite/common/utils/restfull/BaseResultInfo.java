@@ -8,8 +8,7 @@ import java.util.Map;
 /**
  * Restfull API Common ResultInfo class
  * 
- * @param <T>
- *            返回数据
+ * @param <T> 返回数据
  * @author yaohailu
  * @version 2018年10月11日
  */
@@ -43,8 +42,7 @@ public class BaseResultInfo<T> implements Serializable {
 	 * @return
 	 * @author yaohailu
 	 */
-	public static BaseResultInfo<Map<String, Object>> getDefaultMapResultInfoInstance(String code, String msg,
-			Map<String, Object> data) {
+	public static BaseResultInfo<Map<String, Object>> getDefaultMapResultInfoInstance(String code, String msg, Map<String, Object> data) {
 		return new BaseResultInfo<Map<String, Object>>(code, msg, data);
 	}
 
