@@ -4,9 +4,9 @@
 
 ## 配套视频教程
 
-https://edu.csdn.net/course/detail/9430?pre_view=1
+www.jeegit.com
 
-QQ群1：933099583
+QQ群1：866607936
 
 
 
